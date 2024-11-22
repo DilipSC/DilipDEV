@@ -1,10 +1,10 @@
 "use client"
 
-import { motion, useInView } from 'framer-motion'
+import { motion } from 'framer-motion'
 import { useRef, useState, useEffect } from 'react'
 
 export default function AboutMe() {
-  const ref = useRef(null)
+  const ref = useRef<HTMLDivElement | null>(null)
   const [inView, setInView] = useState(false)
 
   // Track when the section comes into view
@@ -22,15 +22,17 @@ export default function AboutMe() {
       inViewOptions
     )
 
-    if (ref.current) observer.observe(ref.current)
+    const currentRef = ref.current
+    if (currentRef) observer.observe(currentRef)
 
     return () => {
-      if (ref.current) observer.unobserve(ref.current)
+      if (currentRef) observer.unobserve(currentRef)
     }
-  }, [ref])
+  }, [inViewOptions])
 
   return (
-    <section id="about"
+    <section
+      id="about"
       ref={ref}
       className="min-h-screen flex items-center justify-center bg-gradient-to-br from-black to-gray-900 py-20 px-4 text-white"
     >
@@ -71,7 +73,7 @@ export default function AboutMe() {
             transition={{ delay: 0.6, duration: 0.6 }}
             className="text-lg leading-relaxed font-mono"
           >
-            While searching for the Holy Grail of courses, I stumbled upon Angela Yu's treasure trove of knowledge. With great determination (and questionable reading skills), I clicked <span className="font-semibold italic">Buy Now</span> on what I thought was a Python course... only to discover I had enrolled in the Web Development bootcamp instead.
+            While searching for the Holy Grail of courses, I stumbled upon Angela Yu&apos;s treasure trove of knowledge. With great determination (and questionable reading skills), I clicked <span className="font-semibold italic">Buy Now</span> on what I thought was a Python course... only to discover I had enrolled in the Web Development bootcamp instead.
           </motion.p>
           <motion.p
             initial={{ opacity: 0, y: 20 }}
@@ -79,7 +81,7 @@ export default function AboutMe() {
             transition={{ delay: 0.8, duration: 0.6 }}
             className="text-lg leading-relaxed font-mono"
           >
-            And just like that, fate (or my lack of attention) decided my career path for me. Spoiler alert: it was the happiest "accident" of my life!
+            And just like that, fate (or my lack of attention) decided my career path for me. Spoiler alert: it was the happiest &quot;accident&quot; of my life!
           </motion.p>
         </div>
         <motion.div

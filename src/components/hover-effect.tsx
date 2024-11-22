@@ -4,6 +4,7 @@ import { cn } from "@/libs/utils";
 import { AnimatePresence, motion } from "framer-motion";
 import Link from "next/link";
 import { useState } from "react";
+import Image from "next/image"; // Import Image from next/image
 
 export const HoverEffect = ({
   items,
@@ -16,7 +17,7 @@ export const HoverEffect = ({
   }[]; 
   className?: string;
 }) => {
-  let [hoveredIndex, setHoveredIndex] = useState<number | null>(null);
+  const [hoveredIndex, setHoveredIndex] = useState<number | null>(null); // Use const here
 
   return (
     <div
@@ -53,7 +54,6 @@ export const HoverEffect = ({
           <Card>
             <CardImage src={item.image} alt={item.title} />
             <CardTitle>{item.title}</CardTitle>
-            
           </Card>
         </Link>
       ))}
@@ -91,10 +91,13 @@ export const CardImage = ({
 }) => {
   return (
     <div className="w-full h-32 mb-4 overflow-hidden">
-      <img
+      <Image
         src={src}
         alt={alt}
         className={cn("object-cover w-full h-full rounded-lg", className)}
+        layout="responsive" // Use next/image for optimization
+        width={500} // Adjust the width as needed
+        height={200} // Adjust the height as needed
       />
     </div>
   );

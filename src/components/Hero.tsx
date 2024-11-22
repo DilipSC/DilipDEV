@@ -1,52 +1,51 @@
-"use client"
+"use client";
 
-import { useState, useEffect } from "react"
-import Image from "next/image"
-import { Github, Linkedin, Instagram } from "lucide-react"
+import { useState, useEffect } from "react";
+import Image from "next/image";
+import { Github, Linkedin, Instagram } from "lucide-react";
 
-const roles = ["Full Stack Developer", "Gamer", "Traveller", "Photographer"]
+const roles = ["Full Stack Developer", "Gamer", "Traveller", "Photographer"];
 
 export default function HeroSection() {
-  const [currentRoleIndex, setCurrentRoleIndex] = useState(0)
-  const [displayedRole, setDisplayedRole] = useState("")
-  const [isDeleting, setIsDeleting] = useState(false)
+  const [currentRoleIndex, setCurrentRoleIndex] = useState(0);
+  const [displayedRole, setDisplayedRole] = useState("");
+  const [isDeleting, setIsDeleting] = useState(false);
 
   useEffect(() => {
-    let timeout: NodeJS.Timeout
+    let timeout: NodeJS.Timeout;
 
     const animateRole = () => {
-      const currentRole = roles[currentRoleIndex]
+      const currentRole = roles[currentRoleIndex];
       if (!isDeleting && displayedRole !== currentRole) {
-        // Typing effect - faster typing
-        setDisplayedRole(currentRole.substring(0, displayedRole.length + 1))
+        // Typing effect
+        setDisplayedRole(currentRole.substring(0, displayedRole.length + 1));
       } else if (isDeleting && displayedRole !== "") {
-        // Deleting effect - faster deleting
-        setDisplayedRole(currentRole.substring(0, displayedRole.length - 1))
+        // Deleting effect
+        setDisplayedRole(currentRole.substring(0, displayedRole.length - 1));
       } else if (isDeleting && displayedRole === "") {
         // Move to the next role
-        setIsDeleting(false)
-        setCurrentRoleIndex((prevIndex) => (prevIndex + 1) % roles.length)
+        setIsDeleting(false);
+        setCurrentRoleIndex((prevIndex) => (prevIndex + 1) % roles.length);
       } else {
         // Pause before deleting
-        setTimeout(() => setIsDeleting(true), 1000)
+        setTimeout(() => setIsDeleting(true), 1000);
       }
 
-      // Speeding up typing and deleting
-      const typingSpeed = isDeleting ? 60 : 100 // Typing is slower, deleting is faster
-      timeout = setTimeout(animateRole, typingSpeed)
-    }
+      const typingSpeed = isDeleting ? 60 : 100;
+      timeout = setTimeout(animateRole, typingSpeed);
+    };
 
-    timeout = setTimeout(animateRole, 200) // Initial delay before animation starts
+    timeout = setTimeout(animateRole, 200);
 
-    return () => clearTimeout(timeout)
-  }, [currentRoleIndex, displayedRole, isDeleting])
+    return () => clearTimeout(timeout);
+  }, [currentRoleIndex, displayedRole, isDeleting]);
 
   return (
     <section className="min-h-screen flex items-center justify-center bg-gradient-to-br from-gray-900 to-black p-4 text-white">
       <div className="max-w-6xl mx-auto flex flex-col md:flex-row items-center justify-between gap-8">
         <div className="flex-1 space-y-6">
           <h1 className="text-4xl md:text-5xl font-bold text-white pt-10">
-            Hi, I'm Dilip Chakravarthi.
+            Hi, I&#39;m Dilip Chakravarthi.
           </h1>
           <h2 className="text-2xl md:text-3xl font-semibold font-mono text-gray-300 h-20 mt-0">
             A{" "}
@@ -99,5 +98,5 @@ export default function HeroSection() {
         </div>
       </div>
     </section>
-  )
+  );
 }
