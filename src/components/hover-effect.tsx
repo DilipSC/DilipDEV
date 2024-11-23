@@ -90,14 +90,13 @@ export const CardImage = ({
   className?: string;
 }) => {
   return (
-    <div className="w-full h-32 mb-4 overflow-hidden">
+    <div className="w-full aspect-w-16 aspect-h-9 mb-4 overflow-hidden"> {/* Aspect ratio */}
       <Image
         src={src}
         alt={alt}
-        className={cn("object-cover w-full h-full rounded-lg", className)}
-        layout="responsive" // Use next/image for optimization
-        width={500} // Adjust the width as needed
-        height={200} // Adjust the height as needed
+        className={cn("object-cover w-full size-20 h-full rounded-lg", className)}
+        width={500} // Specify width here
+        height={300} // Specify height here
       />
     </div>
   );
