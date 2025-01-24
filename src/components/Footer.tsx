@@ -75,7 +75,7 @@ export default function Footer() {
         </motion.div>
 
         {/* Resume Button */}
-        <button className="bg-gray-700 p-4 m-4 font-mono rounded-lg" onClick={() => window.open("https://pdflink.to/dilipscresume/", "_blank")}>
+        <button className="bg-gray-700 p-4 m-4 font-mono rounded-lg" onClick={() => window.open("https://pdflink.to/dscr/", "_blank")}>
   View my Resume
 </button>
 

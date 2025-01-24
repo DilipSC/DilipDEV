@@ -21,7 +21,7 @@ export function ResumeViewer() {
         transition={{ duration: 0.5 }}
       >
         <Image
-          src="https://i.ibb.co/4dtzg2P/Screenshot-2024-11-22-233649.png"
+          src="https://i.ibb.co/c2F6N0f/Screenshot-2025-01-25-014939.png"
           alt="Resume"
           layout="fill"
           objectFit="contain"
