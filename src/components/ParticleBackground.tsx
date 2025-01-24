@@ -1,19 +1,21 @@
 "use client"
 
-import { useCallback } from "react"
+
 import Particles from "react-particles"
-import type { Engine } from "tsparticles-engine"
-import { loadFull } from "tsparticles"
+
+
+
+
+
 
 export function ParticleBackground() {
-  const particlesInit = useCallback(async (engine: Engine) => {
-    await loadFull(engine)
-  }, [])
+    
+      
 
   return (
     <Particles
       id="tsparticles"
-      init={particlesInit}
+     
       options={{
         background: {
           color: {
