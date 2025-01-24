@@ -1,74 +1,89 @@
-"use client";
-import React from "react";
-import { PinContainer } from "./3d-pin";
+"use client"
+
+import React from "react"
+import { motion } from "framer-motion"
+import { ProjectCard } from "@/components/ProjectCard"
+import { ParticleBackground } from "@/components/ParticleBackground"
+
+const projects = [
+  {
+    title: "TrendX",
+    description: "TwitterScrapper using Selenium",
+    link: "https://github.com/DilipSC/TrendX",
+  },
+  {
+    title: "PreBuilt-Auth",
+    description: "Authentication System using JWT which can reuse for hackathons and while building a new project",
+    link: "https://github.com/DilipSC/PreBuilt-Auth",
+  },
+  {
+    title: "CapX-Pro",
+    description: "Stock Trading Portfolio Value Tracker",
+    link: "https://github.com/DilipSC/CapX-pro",
+  },
+  {
+    title: "SastaSnapchat",
+    description: "Anonymous chatting app built using native websockets",
+    link: "https://github.com/DilipSC/SastaSnapchat",
+  },
+  
+  {
+    title: "URL-Shortener",
+    description: "Shortens Url and can be used to multiple times for free",
+    link: "https://github.com/DilipSC/URL-Shortener.git",
+  },
+  {
+    title: "KrishiSEVA",
+    description: "A Contract Farming Website which provides both farmer and buyer to trade corps",
+    link: "https://github.com/DilipSC/SIH",
+  },
+]
 
 export function Projects() {
   return (
-    <>
-    
-      {/* Heading */}
-      <div id="projects"className="w-full text-center py-6 bg-gradient-to-br from-black to-gray-900 text-white">
-        <h2 className="text-3xl font-bold tracking-tight text-slate-100">
-          Projects
-        </h2>
-        
-      
-
-      {/* Cards Section */}
-      <div className="h-auto w-full flex flex-row items-center justify-center gap-8 flex-wrap ">
-        {/* Card 1: SIH */}
-        <PinContainer
-          title="Smart India Hackathon (SIH)"
-          href="https://github.com/DilipSC/SIH.git"
+    <div id="projects" className="relative min-h-screen w-full bg-black text-white ">
+      <ParticleBackground />
+      <div className="absolute inset-0 z-10">
+        <motion.div
+          initial={{ opacity: 0, y: 20 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.8 }}
+          className="container mx-auto px-4 py-16"
         >
-          <div className="flex basis-full flex-col p-4 tracking-tight text-slate-100/50 w-[20rem]">
-            <h3 className="max-w-xs !pb-2 !m-0 font-bold text-base text-slate-100">
-              SIH
-            </h3>
-            <div className="text-base !m-0 !p-0 font-normal">
-              <span className="text-slate-500">
-                Took Part in SIH with my friends and developed a full stack web application.
-              </span>
-            </div>
-          </div>
-        </PinContainer>
-
-        {/* Card 2: URL Shortener */}
-        <PinContainer
-          title="URL Shortener"
-          href="https://github.com/DilipSC/URL-Shortener.git"
-        >
-          <div className="flex basis-full flex-col p-4 tracking-tight text-slate-100/50 w-[20rem]">
-            <h3 className="max-w-xs !pb-2 !m-0 font-bold text-base text-slate-100">
-              URL Shortener
-            </h3>
-            <div className="text-base !m-0 !p-0 font-normal">
-              <span className="text-slate-500">
-                It&apos;s just a basic URL Shortener.Helps me out sometimes.
-              </span>
-            </div>
-          </div>
-        </PinContainer>
-
-        {/* Card 3: Singapore Tourism Website */}
-        <PinContainer
-          title="Singapore Tourism Website"
-          href="https://github.com/DilipSC/Singapore-Tourism.git"
-        >
-          <div className="flex basis-full flex-col p-4 tracking-tight text-slate-100/50 w-[20rem]">
-            <h3 className="max-w-xs !pb-2 !m-0 font-bold text-base text-slate-100">
-              Singapore Tourism Website
-            </h3>
-            <div className="text-base !m-0 !p-0 font-normal">
-              <span className="text-slate-500">
-                Made a Serverless website with Firebase and React.
-              </span>
-            </div>
-          </div>
-        </PinContainer>
-
-        
+          <h2 className="text-4xl font-bold mb-12 text-center text-white">Projects</h2>
+          <motion.div
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            transition={{ delay: 0.4, duration: 0.8 }}
+            className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8"
+          >
+            {projects.map((project, index) => (
+              <motion.div
+                key={project.title}
+                initial={{ opacity: 0, y: 20 }}
+                animate={{ opacity: 1, y: 0 }}
+                transition={{ delay: 0.1 * index, duration: 0.5 }}
+              >
+                <ProjectCard title={project.title} description={project.description} link={project.link} />
+              </motion.div>
+            ))}
+          </motion.div>
+        </motion.div>
       </div>
-    </div></>
-  );
+      <motion.div
+        className="fixed bottom-8 right-8 z-20"
+        initial={{ opacity: 0 }}
+        animate={{ opacity: 1 }}
+        transition={{ delay: 1, duration: 0.5 }}
+      >
+        <button
+          onClick={() => window.scrollTo({ top: 0, behavior: "smooth" })}
+          className="bg-purple-600 hover:bg-purple-700 text-white font-bold py-2 px-4 rounded-full shadow-lg"
+        >
+          ↑
+        </button>
+      </motion.div>
+    </div>
+  )
 }
+
