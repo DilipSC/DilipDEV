@@ -88,7 +88,7 @@ export default function HeroSection() {
           <div className="relative w-64 h-64 md:w-80 md:h-80 transition-all duration-500 ease-in-out transform hover:scale-105">
             <div className="absolute inset-0 bg-gradient-to-r from-gray-600 to-gray-300 rounded-full animate-pulse"></div>
             <Image
-              src="https://i.ibb.co/Y3sBXZx/pfp.jpg"
+              src="https://i.ibb.co/KnNPVGj/Whats-App-Image-2025-02-13-at-19-54-04-e84d31af.jpg"
               alt="Dilip C."
               width={320}
               height={320}
