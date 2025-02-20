@@ -26,7 +26,6 @@ const projects = [
     description: "Anonymous chatting app built using native websockets",
     link: "https://github.com/DilipSC/SastaSnapchat",
   },
-  
   {
     title: "URL-Shortener",
     description: "Shortens Url and can be used to multiple times for free",
@@ -41,21 +40,23 @@ const projects = [
 
 export function Projects() {
   return (
-    <div id="projects" className="relative min-h-screen w-full bg-black text-white ">
+    <section id="projects" className="relative min-h-screen w-full bg-black text-white overflow-hidden">
       <ParticleBackground />
-      <div className="absolute inset-0 z-10">
+      <div className="absolute inset-0 z-10 overflow-y-auto">
         <motion.div
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.8 }}
-          className="container mx-auto px-4 py-16"
+          className="container mx-auto px-4 sm:px-6 py-16 max-w-7xl"
         >
-          <h2 className="text-4xl font-bold mb-12 text-center text-white">Projects</h2>
+          <h2 className="text-3xl sm:text-4xl font-bold mb-8 sm:mb-12 text-center text-white">
+            Projects
+          </h2>
           <motion.div
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
             transition={{ delay: 0.4, duration: 0.8 }}
-            className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8"
+            className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4 sm:gap-6 lg:gap-8"
           >
             {projects.map((project, index) => (
               <motion.div
@@ -63,27 +64,32 @@ export function Projects() {
                 initial={{ opacity: 0, y: 20 }}
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ delay: 0.1 * index, duration: 0.5 }}
+                className="h-full"
               >
-                <ProjectCard title={project.title} description={project.description} link={project.link} />
+                <ProjectCard 
+                  title={project.title} 
+                  description={project.description} 
+                  link={project.link} 
+                />
               </motion.div>
             ))}
           </motion.div>
         </motion.div>
       </div>
       <motion.div
-        className="fixed bottom-8 right-8 z-20"
+        className="fixed bottom-4 sm:bottom-8 right-4 sm:right-8 z-20"
         initial={{ opacity: 0 }}
         animate={{ opacity: 1 }}
         transition={{ delay: 1, duration: 0.5 }}
       >
         <button
           onClick={() => window.scrollTo({ top: 0, behavior: "smooth" })}
-          className="bg-purple-600 hover:bg-purple-700 text-white font-bold py-2 px-4 rounded-full shadow-lg"
+          className="bg-purple-600 hover:bg-purple-700 text-white font-bold p-2 sm:p-3 rounded-full shadow-lg text-sm sm:text-base"
+          aria-label="Scroll to top"
         >
           ↑
         </button>
       </motion.div>
-    </div>
+    </section>
   )
 }
-
