@@ -2,9 +2,9 @@ import AboutMe from "@/components/About";
 import Footer from "@/components/Footer";
 import HeroSection from "@/components/Hero";
 import Navbar from "@/components/Navbar";
-import { Projects } from "@/components/Projects";
+import Projects  from "@/components/Projects";
 import { Resume } from "@/components/Resume";
-import { Skill } from "@/components/Skills";
+import  Skill  from "@/components/Skills";
 
 
 
