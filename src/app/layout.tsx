@@ -13,6 +13,7 @@ const geistMono = localFont({
   weight: "100 900",
 });
 
+
 export const metadata: Metadata = {
   title: "Dilip S Chakrvarthi",
   description: "Hey there click on the link to know me more...",
