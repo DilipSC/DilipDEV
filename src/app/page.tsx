@@ -1,4 +1,4 @@
-import AboutMe from "@/components/About";
+import Experience from "@/components/Experience";
 import Footer from "@/components/Footer";
 import HeroSection from "@/components/Hero";
 import Navbar from "@/components/Navbar";
@@ -13,7 +13,7 @@ export default function Home() {
     <>
     <Navbar/>
     <HeroSection/>
-    <AboutMe/>
+    <Experience/>
     <Skill/>
     <Projects/>
     <Resume/>
