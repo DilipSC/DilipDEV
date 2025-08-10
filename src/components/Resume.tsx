@@ -92,7 +92,7 @@ export default function Resume() {
             {/* Fallback for browsers that don't support iframe PDF viewing */}
             <div className="absolute inset-0 flex items-center justify-center ">
               <div className="text-center space-y-4">
-                <p className="text-white/70">{"Can't view the PDF? "}</p>
+                <p className="text-white/70">Can&apos;t view the PDF? </p>
                 <Button
                   variant="outline"
                   className="bg-white/10 border-white/20 text-white hover:bg-white/20"
@@ -114,7 +114,7 @@ export default function Resume() {
           className="text-center pt-8"
         >
           <div className="relative">
-            <div className="text-6xl text-white/10 absolute -top-4 left-1/2 transform -translate-x-1/2">"</div>
+            <div className="text-6xl text-white/10 absolute -top-4 left-1/2 transform -translate-x-1/2">&ldquo;</div>
             <p className="text-xl font-light text-white/90 italic relative z-10">
               Every line tells a story of growth and dedication
             </p>
