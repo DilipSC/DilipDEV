@@ -90,7 +90,7 @@ export default function Experience() {
               className={`relative flex items-center ${index % 2 === 0 ? "justify-start" : "justify-end"} w-full`}
             >
               {/* Timeline Dot */}
-              <div className="absolute left-1/2 -translate-x-1/2 w-4 h-4 bg-white border border-white/20 flex items-center justify-center text-white rounded-none hidden sm:block"></div>
+              <div className="absolute left-1/2 -translate-x-1/2 w-4 h-4 bg-white border border-white/20 items-center justify-center text-white rounded-none hidden sm:block"></div>
 
               {/* Experience Card */}
               <div
