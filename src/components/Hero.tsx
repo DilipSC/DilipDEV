@@ -62,7 +62,7 @@ export default function HeroSection() {
             {/* Name */}
             <div className="space-y-4">
               <h1 className="text-4xl sm:text-5xl lg:text-6xl font-light text-white">
-                Hi, I'm <span className="font-medium">Dilip</span>
+                Hi, I&apos;m <span className="font-medium">Dilip</span>
               </h1>
 
               {/* Role */}
@@ -114,7 +114,7 @@ export default function HeroSection() {
                 whileHover={{ scale: 1.02 }}
                 whileTap={{ scale: 0.98 }}
               >
-                Let's Connect
+                Let&apos;s Connect
               </motion.button>
             </motion.div>
 
