@@ -1,94 +1,177 @@
 "use client"
 
-import React from "react"
+import { useRef, useState, useEffect } from "react"
 import { motion } from "framer-motion"
-import { ProjectCard } from "@/components/ProjectCard"
-import { ParticleBackground } from "@/components/ParticleBackground"
+import { ExternalLink } from "lucide-react"
 
 const projects = [
   {
     title: "TrendX",
-    description: "TwitterScrapper using Selenium",
+    description: "Twitter scraper using Selenium for trend analysis and data extraction",
     link: "https://github.com/DilipSC/TrendX",
+    tech: ["Python", "Selenium", "Data Analysis"],
   },
   {
     title: "PreBuilt-Auth",
-    description: "Authentication System using JWT which can reuse for hackathons and while building a new project",
+    description: "Reusable JWT authentication system for rapid development and hackathons",
     link: "https://github.com/DilipSC/PreBuilt-Auth",
+    tech: ["Node.js", "JWT", "Express"],
   },
   {
     title: "CapX-Pro",
-    description: "Stock Trading Portfolio Value Tracker",
+    description: "Stock trading portfolio tracker with real-time value monitoring",
     link: "https://github.com/DilipSC/CapX-pro",
+    tech: ["React", "API Integration", "Finance"],
   },
   {
     title: "SastaSnapchat",
-    description: "Anonymous chatting app built using native websockets",
+    description: "Anonymous real-time chat application built with native WebSockets",
     link: "https://github.com/DilipSC/SastaSnapchat",
+    tech: ["WebSocket", "Real-time", "Chat"],
   },
   {
     title: "URL-Shortener",
-    description: "Shortens Url and can be used to multiple times for free",
+    description: "Free URL shortening service with analytics and custom links",
     link: "https://github.com/DilipSC/URL-Shortener.git",
+    tech: ["Node.js", "MongoDB", "Analytics"],
   },
   {
     title: "KrishiSEVA",
-    description: "A Contract Farming Website which provides both farmer and buyer to trade corps",
+    description: "Contract farming platform connecting farmers and buyers for crop trading",
     link: "https://github.com/DilipSC/SIH",
+    tech: ["Full Stack", "Agriculture", "Trading"],
   },
 ]
 
-export function Projects() {
+function ProjectCard({
+  title,
+  description,
+  link,
+  tech,
+  index,
+}: {
+  title: string
+  description: string
+  link: string
+  tech: string[]
+  index: number
+}) {
   return (
-    <section id="projects" className="relative min-h-screen w-full bg-black text-white overflow-hidden">
-      <ParticleBackground />
-      <div className="absolute inset-0 z-10 overflow-y-auto">
+    <motion.div
+      initial={{ opacity: 0, y: 20 }}
+      whileInView={{ opacity: 1, y: 0 }}
+      transition={{ delay: index * 0.1, duration: 0.5 }}
+      viewport={{ once: true }}
+      className="group"
+    >
+      <div className="h-full p-6 border border-white/10 hover:border-white/30 transition-all duration-300 hover:bg-white/5">
+        <div className="space-y-4">
+          {/* Project Title */}
+          <div className="flex items-center justify-between">
+            <h3 className="text-xl font-light text-white group-hover:text-white/90 transition-colors">{title}</h3>
+            <motion.a
+              href={link}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="text-white/60 hover:text-white transition-colors"
+              whileHover={{ scale: 1.1, rotate: 5 }}
+              whileTap={{ scale: 0.9 }}
+            >
+              <ExternalLink className="w-5 h-5" />
+            </motion.a>
+          </div>
+
+          {/* Description */}
+          <p className="text-white/70 font-light leading-relaxed text-sm">{description}</p>
+
+          {/* Tech Stack */}
+          <div className="flex flex-wrap gap-2">
+            {tech.map((item) => (
+              <span
+                key={item}
+                className="px-2 py-1 text-xs font-light text-white/60 border border-white/20 hover:border-white/40 transition-colors"
+              >
+                {item}
+              </span>
+            ))}
+          </div>
+        </div>
+      </div>
+    </motion.div>
+  )
+}
+
+export default function Projects() {
+  const ref = useRef<HTMLDivElement | null>(null)
+  const [inView, setInView] = useState(false)
+
+  useEffect(() => {
+    const observer = new IntersectionObserver(
+      (entries) => {
+        entries.forEach((entry) => {
+          setInView(entry.isIntersecting)
+        })
+      },
+      { threshold: 0.1 },
+    )
+
+    const currentRef = ref.current
+    if (currentRef) observer.observe(currentRef)
+
+    return () => {
+      if (currentRef) observer.unobserve(currentRef)
+    }
+  }, [])
+
+  return (
+    <section id="projects" ref={ref} className="min-h-screen flex items-center justify-center bg-black py-20 px-4">
+      <motion.div
+        initial={{ opacity: 0, y: 30 }}
+        animate={{ opacity: inView ? 1 : 0, y: inView ? 0 : 30 }}
+        transition={{ duration: 0.8 }}
+        className="max-w-7xl w-full text-center space-y-16"
+      >
+        {/* Section Title */}
+        <motion.div
+          initial={{ opacity: 0 }}
+          animate={{ opacity: inView ? 1 : 0 }}
+          transition={{ delay: 0.2, duration: 0.6 }}
+          className="space-y-4"
+        >
+          <h2 className="text-4xl sm:text-5xl font-light text-white">Projects</h2>
+          <div className="w-16 h-px bg-white/30 mx-auto"></div>
+        </motion.div>
+
+        {/* Projects Grid */}
         <motion.div
           initial={{ opacity: 0, y: 20 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.8 }}
-          className="container mx-auto px-4 sm:px-6 py-16 max-w-7xl"
+          animate={{ opacity: inView ? 1 : 0, y: inView ? 0 : 20 }}
+          transition={{ delay: 0.4, duration: 0.8 }}
+          className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6"
         >
-          <h2 className="text-3xl sm:text-4xl font-bold mb-8 sm:mb-12 text-center text-white">
-            Projects
-          </h2>
-          <motion.div
-            initial={{ opacity: 0 }}
-            animate={{ opacity: 1 }}
-            transition={{ delay: 0.4, duration: 0.8 }}
-            className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4 sm:gap-6 lg:gap-8"
-          >
-            {projects.map((project, index) => (
-              <motion.div
-                key={project.title}
-                initial={{ opacity: 0, y: 20 }}
-                animate={{ opacity: 1, y: 0 }}
-                transition={{ delay: 0.1 * index, duration: 0.5 }}
-                className="h-full"
-              >
-                <ProjectCard 
-                  title={project.title} 
-                  description={project.description} 
-                  link={project.link} 
-                />
-              </motion.div>
-            ))}
-          </motion.div>
+          {projects.map((project, index) => (
+            <ProjectCard
+              key={project.title}
+              title={project.title}
+              description={project.description}
+              link={project.link}
+              tech={project.tech}
+              index={index}
+            />
+          ))}
         </motion.div>
-      </div>
-      <motion.div
-        className="fixed bottom-4 sm:bottom-8 right-4 sm:right-8 z-20"
-        initial={{ opacity: 0 }}
-        animate={{ opacity: 1 }}
-        transition={{ delay: 1, duration: 0.5 }}
-      >
-        <button
-          onClick={() => window.scrollTo({ top: 0, behavior: "smooth" })}
-          className="bg-purple-600 hover:bg-purple-700 text-white font-bold p-2 sm:p-3 rounded-full shadow-lg text-sm sm:text-base"
-          aria-label="Scroll to top"
+
+        {/* Bottom Text */}
+        <motion.div
+          initial={{ opacity: 0, y: 20 }}
+          animate={{ opacity: inView ? 1 : 0, y: inView ? 0 : 20 }}
+          transition={{ delay: 1, duration: 0.6 }}
+          className="pt-8"
         >
-          ↑
-        </button>
+          <p className="text-lg font-light text-white/60 max-w-2xl mx-auto">
+            Each project represents a journey of learning, problem-solving, and innovation
+          </p>
+        </motion.div>
       </motion.div>
     </section>
   )
