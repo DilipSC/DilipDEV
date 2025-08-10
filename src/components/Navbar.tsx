@@ -40,12 +40,12 @@ export default function Navbar() {
             whileHover={{ scale: 1.05 }}
             whileTap={{ scale: 0.95 }}
           >
-            DILIPSC
+            DILIP S CHAKRAVARTHI
           </motion.button>
 
           {/* Navigation Links */}
           <div className="hidden md:flex items-center space-x-8">
-            {["about", "skills", "projects", "contact"].map((item) => (
+            {["experience", "skills", "projects", "contact"].map((item) => (
               <motion.button
                 key={item}
                 onClick={() => scrollToSection(item)}

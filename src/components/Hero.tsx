@@ -126,8 +126,8 @@ export default function HeroSection() {
               transition={{ delay: 1 }}
             >
               {[
-                { number: "50+", label: "Projects" },
-                { number: "3+", label: "Years" },
+                { number: "25+", label: "Projects" },
+                { number: "2+", label: "Years" },
                 { number: "15+", label: "Technologies" },
               ].map((stat, index) => (
                 <div key={index} className="text-center">
